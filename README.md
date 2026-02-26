@@ -17,6 +17,32 @@ Vulkan Native: Built from the ground up for modern hardware efficiency.
 Collision System: Includes a functional, simple collision detection system.
 Developer Friendly: Designed for rapid prototyping without sacrificing performance.
 
+# Build and run demos
+
+1. To build Hammer Engine you will need to install vulkan, vulkan validation layers, spirv tools and stb.
+`sudo apt-get install libvulkan-dev vulkan-tools vulkan-validationlayers spirv-tools libstb-dev`
+
+2. Test your vulkan install
+`vkcube`
+
+3. You will need to clone the latest version of Hammer Engine
+`git clone https://github.com/MidnightHammer-code/HammerEngine.git`
+
+4. Go in the HammerEngine/tests/3d_world folder or any other test
+`cd HammerEngine/tests/3d_world/`
+
+5. Make a folder called build and go in the build folder
+`mkdir build && cd build`
+
+6. Run Cmake and make to prepare the build and build it using all available cores
+`cmake .. && make -j(nproc)`
+
+7. Move the executable to the main test folder and go to the main test folder
+`mv voxel_Engine .. && cd ..`
+
+8. Run the test
+`./voxel_Engine`
+
 # Want to contribute?
 We are looking for contributors! Since we are in the alpha/beta stage, now is the best time to help shape the engine's architecture. We are especially looking for help with:
 
