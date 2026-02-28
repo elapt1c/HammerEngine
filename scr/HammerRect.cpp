@@ -1,4 +1,5 @@
 #include "../include/HammerEngine/HammerRect.h"
+#include <cmath>
 
 // Rect cube noF
 
@@ -266,4 +267,83 @@ bool HammerRectSquareF::HammerRectCollideSquareF(HammerRectSquareF rect) {
         this->x < rect.x + rect.w && this->x + this->w > rect.x &&
         this->y < rect.y + rect.h && this->y + this->h > rect.y
     );
+}
+
+HammerRectCercle::HammerRectCercle(int X, int Y, int R) {
+    this->x = X;
+    this->y = Y;
+    this->r = R;
+}
+
+bool HammerRectCercle::HammerRectCollideCercleToCercle(HammerRectCercle rect) {
+    int dx = this->x - rect.x;
+    int dy = this->y - rect.y;
+
+    int distanceSquared = (dx * dx) + (dy * dy);
+
+    int radiusSum = this->r + rect.r;
+    int radiusSumSquared = radiusSum * radiusSum;
+
+    return distanceSquared <= radiusSumSquared;
+}
+
+HammerRectCercleF::HammerRectCercleF(float X, float Y, float R) {
+    this->x = X;
+    this->y = Y;
+    this->r = R;
+}
+
+bool HammerRectCercleF::HammerRectCollideCercleToCercleF(HammerRectCercleF rect) {
+    float dx = this->x - rect.x;
+    float dy = this->y - rect.y;
+
+    float distanceSquared = (dx * dx) + (dy * dy);
+
+    float radiusSum = this->r + rect.r;
+    float radiusSumSquared = radiusSum * radiusSum;
+
+    return distanceSquared <= radiusSumSquared;
+}
+
+
+
+
+HammerRectSphere::HammerRectSphere(int X, int Y, int Z, int R) {
+    this->x = X;
+    this->y = Y;
+    this->z = Z;
+    this->r = R;
+}
+
+bool HammerRectSphere::HammerRectCollideSphereToSphere(HammerRectSphere rect) {
+    int dx = this->x - rect.x;
+    int dy = this->y - rect.y;
+    int dz = this->z - rect.z;
+
+    int distanceSquared = (dx * dx) + (dy * dy) + (dz * dz);
+
+    int radiusSum = this->r + rect.r;
+    int radiusSumSquared = radiusSum * radiusSum;
+
+    return distanceSquared <= radiusSumSquared;
+}
+
+HammerRectSphereF::HammerRectSphereF(float X, float Y, float Z, float R) {
+    this->x = X;
+    this->y = Y;
+    this->z = Z;
+    this->r = R;
+}
+
+bool HammerRectSphereF::HammerRectCollideSphereToSphereF(HammerRectSphereF rect) {
+    int dx = this->x - rect.x;
+    int dy = this->y - rect.y;
+    int dz = this->z - rect.z;
+
+    int distanceSquared = (dx * dx) + (dy * dy) + (dz * dz);
+
+    int radiusSum = this->r + rect.r;
+    int radiusSumSquared = radiusSum * radiusSum;
+
+    return distanceSquared <= radiusSumSquared;
 }

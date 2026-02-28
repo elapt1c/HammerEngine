@@ -59,4 +59,55 @@ public:
 	HammerRectSquareF(float X, float Y, float W, float H);
 };
 
+
+// finish the Cercle to Square and cube
+
+class HammerRectCercle{
+public:
+	int x;
+	int y;
+
+	int r;
+
+	bool HammerRectCollideCercleToCercle(HammerRectCercle rect);
+	HammerRectCercle(int X, int Y, int R);
+};
+
+class HammerRectCercleF{
+public:
+	float x;
+	float y;
+
+	float r;
+
+	bool HammerRectCollideCercleToCercleF(HammerRectCercleF rect);
+	HammerRectCercleF(float X, float Y, float R);
+};
+
+///
+
+class HammerRectSphere{
+public:
+	int x;
+	int y;
+	int z;
+
+	int r;
+
+	bool HammerRectCollideSphereToSphere(HammerRectSphere rect);
+	HammerRectSphere(int X, int Y, int Z, int R);
+};
+
+class HammerRectSphereF{
+public:
+	float x;
+	float y;
+	float z;
+
+	float r;
+
+	bool HammerRectCollideSphereToSphereF(HammerRectSphereF rect);
+	HammerRectSphereF(float X, float Y, float Z, float R);
+};
+
 #endif
