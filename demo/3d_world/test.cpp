@@ -84,9 +84,12 @@ int main() {
     Engine.enableValidationLayers = true;
     Engine.WindowWidth = 1200;
     Engine.WindowHeight = 900;
-    Engine.texturePath = "textures/texture.png";
+    
+    // Engine.texturePath is no longer strictly needed for the global engine 
+    // as each HammerTexture will have its own path.
+    
     Engine.mouseLock = 1; 
-    Engine.windowName = "Vulkan";
+    Engine.windowName = "Hammer Engine - Multi Texture";
     Engine.renderDistance = 1000.0f;
     Engine.cameraSpeed = 1.0f;
 
@@ -96,18 +99,25 @@ int main() {
     Engine.initWindow();
     Engine.initVulkan();
 
+    // 1. Create the Pipeline
     std::string vPath = "shaders/vert.spv";
     std::string fPath = "shaders/frag.spv";
     auto mainPipeline = std::make_unique<HammerPipeline>(Engine, vPath, fPath, 1, true);
 
+    // 2. Create Textures (New Step!)
+    // You can now create multiple textures with different filters
+    auto crateTexture = std::make_unique<HammerTexture>(Engine, "textures/texture.png", HammerTextureFilter::Linear);
+    auto dirtTexture  = std::make_unique<HammerTexture>(Engine, "textures/texture1.jpg", HammerTextureFilter::Nearest);
+
+    // 3. Generate Geometry
     std::vector<Vertex> vertices;
     std::vector<uint32_t> indices;
-    
     generateCubeGrid(vertices, indices, 10, 10, 10);
 
-    auto myMesh = std::make_unique<HammerMesh>(Engine, mainPipeline.get(), vertices, indices);
+    // 4. Create Mesh and associate it with a specific texture
+    // Pass 'crateTexture.get()' as the new argument
+    auto myMesh = std::make_unique<HammerMesh>(Engine, mainPipeline.get(), crateTexture.get(), vertices, indices);
     
-    HammerMesh* meshPtr = myMesh.get();
     Engine.meshs.push_back(std::move(myMesh));
 
     Engine.drawPassStart();
@@ -115,10 +125,18 @@ int main() {
         Engine.updateFrameTimeStart();
 
         Engine.updateCameraDefault3D();
+        
+        // drawFrame will now iterate through meshes, 
+        // and each mesh will bind its own texture descriptor set
         Engine.drawFrame(); 
+        
         Engine.updateFrameTimeEnd();
     }
     Engine.drawPassEnd();
+
+    // Clean up textures before engine destruction
+    crateTexture.reset();
+    dirtTexture.reset();
 
     return EXIT_SUCCESS;
 }
