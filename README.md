@@ -11,6 +11,10 @@ The goal of the Hammer Engine is combining ease of use and the speed of Vulkan t
 
 The #1 goal of HammerEngine is it's performance on low-end machines. It out-performs many other engines while remaining compatable with as many machines as possible.
 
+# Cross-platform
+
+Hammer supports for all major linux distro, windows (comming soon) and chromebook.
+
 # What does Hammer support?
 
 Vulkan Native: Built from the ground up for modern hardware efficiency.
