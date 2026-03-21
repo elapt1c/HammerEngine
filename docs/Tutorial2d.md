@@ -1,11 +1,11 @@
-Welcome to the HammerEngine documentation. This tutorial will walk you through the evolution of a Hammer project, starting with basic 2D rendering, moving meshs and collision using HammerRect.
+Welcome to the Hammer documentation. This tutorial will walk you through the evolution of a Hammer project, starting with basic 2D rendering, moving meshs and collision using HammerRect.
 This tutorial asumes that you have a midium undersanding of C++.
 
 Now lets get started.
 
 ## 1. Creating a Hammer Engine instance.
 
-The foundation of any HammerEngine project involves configuring the engine settings, initializing Vulkan, and setting up a basic camera.
+The foundation of any Hammer project involves configuring the engine settings, initializing Vulkan, and setting up a basic camera.
 
 First we need to a instance of Hammer:
 
