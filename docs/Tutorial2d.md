@@ -1,25 +1,25 @@
-Welcome to the Hammer documentation. This tutorial will walk you through the evolution of a Hammer project, starting with basic 2D rendering, moving meshs and collision using HammerRect.
-This tutorial asumes that you have a midium undersanding of C++.
+Welcome to the Hammer documentation. This tutorial will walk you through the evolution of a Hammer project, starting with basic 2D rendering, moving meshes and collision using HammerRect.
+This tutorial assumes that you have a medium understanding of C++.
 
-Now lets get started.
+Now let's get started.
 
 ## 1. Creating a Hammer Engine instance.
 
 The foundation of any Hammer project involves configuring the engine settings, initializing Vulkan, and setting up a basic camera.
 
-First we need to a instance of Hammer:
+First we need to an instance of Hammer:
 
 `HammerEngine engine;`
 
-Now we have a instance of the engine called "engine".
+Now we have an instance of the engine called “engine”.
 
 ## 2. Configuring the Engine.
 ### 2.1 Validation layers
-Validation layers are there to give you more detaled errors than the one Vulkan gives you. For developpement we will turn them on.
+Validation layers are there to give you more detailed errors than the one Vulkan gives you. For development we will turn them on.
 
 `Engine.enableValidationLayers = true;`
 
-You can always turn them off by just changine the true for a false.
+You can always turn them off by just changing the true for false.
 
 ### 2.2 Window
 In Hammer Engine you can change a few things of the window. These things include: window size (w and h) but also the title of the screen.
@@ -41,20 +41,20 @@ You can give Hammer Engine the path to a texture, but only 1 in the future Hamme
 `Engine.texturePath = "textures/texture.png";`
 
 ### 2.5 The mouse
-If you are building a app that you need to have the controle over the mouse cursor you can call change the cursor state.
-If mouse lock it set to 0 the mouse will be free to move, if it 1 the mouse can not longer move.
+If you are building an app that you need to have the control over the mouse cursor you can call change the cursor state.
+If mouse lock it set to 0 the mouse will be free to move, if it 1 the mouse can no longer move.
 
 `Engine.mouseLock = 0;`
 
 ### 2.6 Max textures
-Hammer needs to know how many textures in total there will be, i recommand putting 1.5 times as much as you will need. If you get any whird errors from the validation layers try ingresing the numbre.
-For this example we will put 1000 to avoid futur head aks.
+Hammer needs to know how many textures in total there will be, I recommend putting 1.5 times as much as you will need. If you get any weird errors from the validation layers try increasing the number.
+For this example we will put 1000 to avoid future head aks.
 
 `Engine.MaxTextures = 1000;`
 
 ### 2.7 Camera speed
 
-If you are using the build in cameras from Hammer the cameraSpeed variable will change the speed at witch the camera move in all axis.
+If you are using the build in cameras from Hammer the cameraSpeed variable will change the speed at which the camera move in all axis.
 
 `Engine.cameraSpeed = 0.1f;`
 
@@ -107,7 +107,7 @@ C++
 The pipeline needs your vertex and fragment shaders.
 C++
 
-auto mainPipeline = std::make_unique<HammerPipeline>(Engine, "shaders/vert.spv", "shaders/frag.spv", 1, true);
+auto mainPipeline = std::make_unique<HammerPipeline>(Engine, "shaders/vert.spv", “shaders/frag.spv", 1, true);
 
 5. Creating a Mesh
 
